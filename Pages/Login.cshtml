@@ -1,0 +1,38 @@
+﻿@page
+@model WebApplication1.Pages.LoginModel
+@{
+}
+<form class="w-50 mx-auto" id="hello" method="post">
+    <h2 class="text-center pb-3">Login</h2>
+    <div class="form-group mb-3">
+        <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group mb-4">
+        <input type="password" class="form-control" name="Password" placeholder="Password">
+    </div>
+    <div class="form-check mb-1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+    </div>
+    <button type="submit" class="btn btn-primary my-3">Submit</button> <br/>
+
+    @{if (Model.ErrorMessage.Length > 0)
+        {
+            <div class="alert alert-danger" role="alert">
+                <p>@Model.ErrorMessage</p>
+            </div>
+        }
+}
+
+
+  @{
+        if (Model.SucessMessage.Length > 0)
+        {
+            <div class="alert alert-success" role="alert">
+                <p>@Model.SucessMessage</p>
+            </div>
+        }
+    }
+</form>

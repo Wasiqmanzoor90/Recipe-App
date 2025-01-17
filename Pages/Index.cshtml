@@ -1,0 +1,130 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+    }
+
+    .recipe-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+
+    }
+
+    .recipe-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+    }
+
+    .recipe-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .recipe-card img {
+        width: 150%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .recipe-card h2 {
+        font-size: 18px;
+        color: #333;
+        margin: 15px 0;
+        padding: 0 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .recipe-card p {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.5;
+        padding: 0 15px;
+        max-height: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .recipe-card .btn {
+        background-color: #ff7043;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        margin: 15px 0;
+    }
+
+    .recipe-card .btn:hover {
+        background-color: #ff5722;
+    }
+</style>
+
+<div class="text-center">
+    <h1>Quick Recipes Under 30 Minutes</h1>
+    <div id="recipe-container" class="recipe-container mb-5 ">
+        <p>Loading recipes...</p>
+    </div>
+</div>
+
+<script>
+    async function food() {
+        const url = 'https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes';
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': '61484a3c1dmsh1025ff3ece34258p153d55jsn804aaeac12b0',
+                'x-rapidapi-host': 'tasty.p.rapidapi.com'
+            }
+        };
+
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+
+            // Check if recipes exist
+            if (result && result.results && result.results.length > 0) {
+                const container = document.getElementById('recipe-container');
+                container.innerHTML = ''; // Clear the loading text
+
+                // Generate recipe cards
+                result.results.forEach(recipe => {
+                    const card = document.createElement('div');
+                    card.className = 'recipe-card';
+
+                    card.innerHTML = `
+                        <img src="${recipe.thumbnail_url}" alt="${recipe.name}">
+                        <h2>${recipe.name}</h2>
+                        <p>${recipe.description || "No description available."}</p>
+                        <a class="btn" href="${recipe.original_video_url || '#'}" target="_blank">View Recipe</a>
+                    `;
+
+                    container.appendChild(card);
+                });
+            } else {
+                document.getElementById('recipe-container').innerHTML = '<p>No recipes found.</p>';
+            }
+        } catch (error) {
+            console.error(error);
+            document.getElementById('recipe-container').innerHTML = '<p>Error fetching recipes. Please try again later.</p>';
+        }
+    }
+
+
+    food();
+</script>
