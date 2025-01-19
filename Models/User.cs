@@ -15,5 +15,17 @@ namespace WebApplication1.Models
         public required string Email { get; set; }
         public required string Password { get; set; }
 
+
+
+        public string? Phone { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime? DateModified { get; set; }
+        public string? Role { get; set; }
+        public string? ProfilePictureUrl { get; set; }
+
+
+        public string? Otp { get; set; }
+        public DateTime? OtpExpiry { get; set; } // Make this nullable by adding "?"
+
     }
 }

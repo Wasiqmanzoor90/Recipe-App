@@ -10,33 +10,34 @@
     <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header class="wid">
+    <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
-            <div class="container">
+    <div class="container">
+        <!-- Navbar toggler button -->
+        <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                     <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <!-- Gatoes brand -->
+        <a class="navbar-brand text-danger mx-auto" asp-area="" asp-page="/Index">Gatoes</a>
 
-                <a class="navbar-brand text-danger" asp-area="" asp-page="/Index">Gatoes</a>
-           
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+        <!-- Collapsible content -->
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-page="/Privacy">Privacy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-page="/Signup">Account</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-                          <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Signup">Account</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -44,9 +45,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-light bg-dark mt-5">
+    <footer class="border-top footer text-danger bg-dark mt-5">
         <div class="container">
-            &copy; 2025 - WebApplication1 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2025 - Gatoes - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 

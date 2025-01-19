@@ -1,0 +1,34 @@
+﻿@page
+@model WebApplication1.Pages.MailControllerModel
+@{
+}
+
+<form class="w-50 mx-auto" id="hello" method="post">
+    <h2 class="text-center pb-3">Login</h2>
+
+    <!-- Input for email with data binding -->
+    <div class="form-group mb-3">
+        <input type="email" class="form-control" asp-for="Req.UserEmail" aria-describedby="emailHelp" placeholder="Enter email" />
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <span asp-validation-for="Req.UserEmail" class="text-danger"></span>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary my-3">Submit</button>
+
+    <!-- Error Message -->
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            <p>@Model.ErrorMessage</p>
+        </div>
+    }
+
+    <!-- Success Message -->
+    @if (!string.IsNullOrEmpty(Model.SucessMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            <p>@Model.SucessMessage</p>
+        </div>
+    }
+</form>

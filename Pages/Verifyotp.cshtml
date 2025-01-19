@@ -1,0 +1,27 @@
+﻿@page "{id?}"
+
+@model WebApplication1.Pages.VerifyotpModel
+@{
+    ViewData["Title"] = "Verify OTP and Reset Password";
+}
+
+<form method="post" class="w-50 mx-auto">
+    <h2 class="text-center pb-3">Verify OTP</h2>
+
+    <div class="form-group mb-3">
+        <label for="otp">Enter OTP</label>
+        <input type="text" class="form-control" id="otp" name="Req.Otp" placeholder="Enter OTP" required />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="newPass">New Password</label>
+        <input type="password" class="form-control" id="newPass" name="Req.Pass" placeholder="Enter new password" required />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="confirmPass">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPass" name="Req.Confpass" placeholder="Confirm password" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
